@@ -68,11 +68,11 @@ public class AttendanceCreateServlet extends HttpServlet {
                 em.persist(a);
                 em.getTransaction().commit();
                 em.close();
+                request.getSession().setAttribute("flush", "出勤打刻をしました");
                 response.sendRedirect(request.getContextPath() + "/attendances/index");
 
             } else {
                 request.getSession().setAttribute("flush", "出勤打刻は完了しています");
-
                 response.sendRedirect(request.getContextPath() + "/attendances/index");
             }
         }
